@@ -13,14 +13,14 @@ void main(){
 	if (fstat(fd,&sb) == -1)
 		perror("Couldn't get the file size.\n");
 	
-	printf("file size is %ld\n",sb.st_size);
+
 	char *file_in_memory = mmap(NULL, sb.st_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 	printf("Enter choice \n 1.Write a character \n 2.Read file 3. Exit \n");
 	scanf("%d",&choice);
 	while(choice != 3){
 		switch(choice){
 			case 1:
-				printf("Enter the index between 0 and %ld \n",sb.st_size);
+				printf("Enter the index between 0 and %ld \n",sb.st_size-1);
 				scanf("%d",&index);
 				printf("Enter character to be written \n");
 				scanf("%s",&c);
